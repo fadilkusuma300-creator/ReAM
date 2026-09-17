@@ -1,0 +1,43 @@
+seed: 13
+model:
+  text_model: bert-base-uncased
+  max_length: 128
+  representation_dim: 128
+  hidden_dim: 64
+  dropout: 0.1
+  max_neighbors: 15
+  max_neighbor_name_chars: 64
+  char_embedding_dim: 32
+  char_cnn_channels: 32
+  char_kernel_sizes: [2, 3, 4, 5]
+  category_embedding_dim: 32
+  rbf_bins: 16
+  rbf_sigma: 0.0666666667
+  beta: 0.2
+  temperature: 1.0
+  eps: 1.0e-8
+training:
+  batch_size: 64
+  max_epochs: 25
+  warmup_epochs: 5
+  patience: 5
+  text_lr: 2.0e-5
+  other_lr: 1.0e-4
+  weight_decay: 0.01
+  lambda_branch: 0.3
+  lambda_reliability: 0.2
+  use_bf16: true
+  num_workers: 4
+  threshold_grid_points: 181
+degradation:
+  clean_fraction: 0.50
+  single_fraction_of_degraded: 0.70
+  text_mask_min: 0.10
+  text_mask_max: 0.40
+  coordinate_shift_min_m: 20.0
+  coordinate_shift_max_m: 200.0
+  neighborhood_delete_min: 0.20
+  neighborhood_delete_max: 0.60
+metrics:
+  ece_bins: 15
+  reliability_bins: 15
